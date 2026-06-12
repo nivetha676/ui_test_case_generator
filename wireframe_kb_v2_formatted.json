@@ -1,0 +1,562 @@
+You are a QA engineer for an automotive infotainment system. Generate step-by-step test cases for the following wireframe specification.
+
+SYSTEM: Car Infotainment
+TEST TYPE: navigation
+FORMAT: steps
+
+WIREFRAME KB:
+{
+  "home": {
+    "id": "home",
+    "title": "Home dashboard",
+    "url": "/home",
+    "elements": [
+      {
+        "id": "widget_now_playing",
+        "label": "Now playing widget",
+        "type": "info_widget",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "media",
+        "region": {
+          "x": 10,
+          "y": 50,
+          "w": 190,
+          "h": 80
+        }
+      },
+      {
+        "id": "widget_navigation",
+        "label": "Navigation summary",
+        "type": "info_widget",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "nav",
+        "region": {
+          "x": 210,
+          "y": 50,
+          "w": 190,
+          "h": 80
+        }
+      },
+      {
+        "id": "tile_climate",
+        "label": "Climate tile",
+        "type": "status_tile",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "climate",
+        "region": {
+          "x": 10,
+          "y": 145,
+          "w": 120,
+          "h": 70
+        }
+      },
+      {
+        "id": "tile_battery",
+        "label": "Battery tile",
+        "type": "status_tile",
+        "tappable": false,
+        "action": "none",
+        "region": {
+          "x": 145,
+          "y": 145,
+          "w": 120,
+          "h": 70
+        }
+      },
+      {
+        "id": "tile_missed_calls",
+        "label": "Missed calls tile",
+        "type": "status_tile",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "phone",
+        "region": {
+          "x": 275,
+          "y": 145,
+          "w": 120,
+          "h": 70
+        }
+      },
+      {
+        "id": "tab_home",
+        "label": "Home tab",
+        "type": "tab",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "home",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "w": 80,
+          "h": 36
+        }
+      },
+      {
+        "id": "tab_media",
+        "label": "Media tab",
+        "type": "tab",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "media",
+        "region": {
+          "x": 80,
+          "y": 0,
+          "w": 80,
+          "h": 36
+        }
+      },
+      {
+        "id": "tab_nav",
+        "label": "Nav tab",
+        "type": "tab",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "nav",
+        "region": {
+          "x": 160,
+          "y": 0,
+          "w": 80,
+          "h": 36
+        }
+      },
+      {
+        "id": "tab_climate",
+        "label": "Climate tab",
+        "type": "tab",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "climate",
+        "region": {
+          "x": 240,
+          "y": 0,
+          "w": 80,
+          "h": 36
+        }
+      },
+      {
+        "id": "tab_phone",
+        "label": "Phone tab",
+        "type": "tab",
+        "tappable": true,
+        "action": "navigate",
+        "target_screen": "phone",
+        "region": {
+          "x": 320,
+          "y": 0,
+          "w": 80,
+          "h": 36
+        }
+      }
+    ]
+  },
+  "media": {
+    "id": "media",
+    "title": "Media player",
+    "url": "/media",
+    "elements": [
+      {
+        "id": "src_spotify",
+        "label": "Spotify source",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "set_source",
+        "value": "spotify",
+        "states": [
+          "active",
+          "inactive"
+        ]
+      },
+      {
+        "id": "src_fm",
+        "label": "FM Radio source",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "set_source",
+        "value": "fm"
+      },
+      {
+        "id": "src_usb",
+        "label": "USB source",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "set_source",
+        "value": "usb"
+      },
+      {
+        "id": "src_bt",
+        "label": "Bluetooth source",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "set_source",
+        "value": "bluetooth"
+      },
+      {
+        "id": "btn_play_pause",
+        "label": "Play/Pause",
+        "type": "button",
+        "tappable": true,
+        "action": "toggle_playback",
+        "states": [
+          "playing",
+          "paused"
+        ]
+      },
+      {
+        "id": "btn_skip_fwd",
+        "label": "Skip forward",
+        "type": "button",
+        "tappable": true,
+        "action": "skip_forward"
+      },
+      {
+        "id": "btn_skip_back",
+        "label": "Skip back",
+        "type": "button",
+        "tappable": true,
+        "action": "skip_back"
+      },
+      {
+        "id": "btn_repeat",
+        "label": "Repeat",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "toggle_repeat",
+        "states": [
+          "off",
+          "one",
+          "all"
+        ]
+      },
+      {
+        "id": "btn_shuffle",
+        "label": "Shuffle",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "toggle_shuffle",
+        "states": [
+          "off",
+          "on"
+        ]
+      },
+      {
+        "id": "slider_volume",
+        "label": "Volume slider",
+        "type": "slider",
+        "tappable": true,
+        "action": "set_volume",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "id": "slider_seek",
+        "label": "Seek bar",
+        "type": "slider",
+        "tappable": true,
+        "action": "seek"
+      },
+      {
+        "id": "txt_track_title",
+        "label": "Track title",
+        "type": "text_display",
+        "tappable": false
+      },
+      {
+        "id": "txt_artist",
+        "label": "Artist name",
+        "type": "text_display",
+        "tappable": false
+      }
+    ]
+  },
+  "nav": {
+    "id": "nav",
+    "title": "Navigation",
+    "url": "/nav",
+    "elements": [
+      {
+        "id": "inp_destination",
+        "label": "Destination search",
+        "type": "text_input",
+        "tappable": true,
+        "action": "open_keyboard",
+        "placeholder": "Search destination…"
+      },
+      {
+        "id": "map_view",
+        "label": "Map view",
+        "type": "map_display",
+        "tappable": true,
+        "action": "pan_map"
+      },
+      {
+        "id": "btn_go_home",
+        "label": "Go home",
+        "type": "button",
+        "tappable": true,
+        "action": "navigate_to_saved",
+        "value": "home"
+      },
+      {
+        "id": "btn_go_work",
+        "label": "Go work",
+        "type": "button",
+        "tappable": true,
+        "action": "navigate_to_saved",
+        "value": "work"
+      },
+      {
+        "id": "btn_route_fastest",
+        "label": "Fastest route",
+        "type": "radio_button",
+        "tappable": true,
+        "action": "set_route_mode",
+        "value": "fastest",
+        "default": true
+      },
+      {
+        "id": "btn_route_eco",
+        "label": "Eco route",
+        "type": "radio_button",
+        "tappable": true,
+        "action": "set_route_mode",
+        "value": "eco"
+      },
+      {
+        "id": "btn_route_scenic",
+        "label": "Scenic route",
+        "type": "radio_button",
+        "tappable": true,
+        "action": "set_route_mode",
+        "value": "scenic"
+      },
+      {
+        "id": "btn_start_nav",
+        "label": "Start navigation",
+        "type": "button",
+        "tappable": true,
+        "action": "start_navigation",
+        "requires": [
+          "destination_set"
+        ]
+      }
+    ]
+  },
+  "climate": {
+    "id": "climate",
+    "title": "Climate control",
+    "url": "/climate",
+    "elements": [
+      {
+        "id": "disp_driver_temp",
+        "label": "Driver temperature",
+        "type": "text_display",
+        "tappable": false
+      },
+      {
+        "id": "btn_driver_up",
+        "label": "Driver temp +",
+        "type": "button",
+        "tappable": true,
+        "action": "adjust_driver_temp",
+        "value": 0.5
+      },
+      {
+        "id": "btn_driver_dn",
+        "label": "Driver temp −",
+        "type": "button",
+        "tappable": true,
+        "action": "adjust_driver_temp",
+        "value": -0.5
+      },
+      {
+        "id": "disp_pass_temp",
+        "label": "Passenger temperature",
+        "type": "text_display",
+        "tappable": false
+      },
+      {
+        "id": "btn_pass_up",
+        "label": "Passenger temp +",
+        "type": "button",
+        "tappable": true,
+        "action": "adjust_pass_temp",
+        "value": 0.5
+      },
+      {
+        "id": "btn_pass_dn",
+        "label": "Passenger temp −",
+        "type": "button",
+        "tappable": true,
+        "action": "adjust_pass_temp",
+        "value": -0.5
+      },
+      {
+        "id": "slider_fan",
+        "label": "Fan speed",
+        "type": "slider",
+        "tappable": true,
+        "action": "set_fan_speed",
+        "min": 0,
+        "max": 8
+      },
+      {
+        "id": "btn_auto",
+        "label": "Auto climate",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "toggle_auto",
+        "states": [
+          "on",
+          "off"
+        ]
+      },
+      {
+        "id": "btn_ac",
+        "label": "A/C",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "toggle_ac",
+        "states": [
+          "on",
+          "off"
+        ]
+      },
+      {
+        "id": "btn_recirc",
+        "label": "Recirculate",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "toggle_recirc",
+        "states": [
+          "on",
+          "off"
+        ]
+      },
+      {
+        "id": "btn_defrost",
+        "label": "Defrost",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "toggle_defrost",
+        "states": [
+          "off",
+          "front",
+          "rear",
+          "both"
+        ]
+      },
+      {
+        "id": "btn_seat_heat",
+        "label": "Seat heat",
+        "type": "toggle_button",
+        "tappable": true,
+        "action": "toggle_seat_heat",
+        "states": [
+          "off",
+          "low",
+          "medium",
+          "high"
+        ]
+      }
+    ]
+  },
+  "phone": {
+    "id": "phone",
+    "title": "Phone",
+    "url": "/phone",
+    "elements": [
+      {
+        "id": "disp_device",
+        "label": "Connected device",
+        "type": "info_widget",
+        "tappable": false
+      },
+      {
+        "id": "lst_recent_calls",
+        "label": "Recent calls list",
+        "type": "list",
+        "tappable": false
+      },
+      {
+        "id": "btn_call_back_1",
+        "label": "Call back contact 1",
+        "type": "button",
+        "tappable": true,
+        "action": "place_call",
+        "target": "contact_1"
+      },
+      {
+        "id": "btn_call_back_2",
+        "label": "Call back contact 2",
+        "type": "button",
+        "tappable": true,
+        "action": "place_call",
+        "target": "contact_2"
+      },
+      {
+        "id": "btn_call_back_3",
+        "label": "Call back contact 3",
+        "type": "button",
+        "tappable": true,
+        "action": "place_call",
+        "target": "contact_3"
+      }
+    ]
+  }
+}
+
+NAVIGATION FLOWS:
+{
+  "home_to_media": {
+    "from": "home",
+    "to": "media",
+    "via": [
+      "tab_media",
+      "widget_now_playing"
+    ]
+  },
+  "home_to_nav": {
+    "from": "home",
+    "to": "nav",
+    "via": [
+      "tab_nav",
+      "widget_navigation"
+    ]
+  },
+  "home_to_climate": {
+    "from": "home",
+    "to": "climate",
+    "via": [
+      "tab_climate",
+      "tile_climate"
+    ]
+  },
+  "home_to_phone": {
+    "from": "home",
+    "to": "phone",
+    "via": [
+      "tab_phone",
+      "tile_missed_calls"
+    ]
+  },
+  "any_to_home": {
+    "from": "*",
+    "to": "home",
+    "via": [
+      "tab_home"
+    ]
+  }
+}
+
+INSTRUCTIONS:
+- Generate comprehensive navigation test cases covering every interactive element
+- Each test must have: ID, title, precondition, steps, expected result
+- Consider real automotive context (driver distraction, touch while driving)
+- Include both happy path and failure scenarios
+- Use numbered steps
+- Reference element IDs from the wireframe in your test steps
+
+Generate the test cases now:

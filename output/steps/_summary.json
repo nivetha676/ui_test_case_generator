@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-06-12T13:49:24.777935Z",
+  "model": "mistral:7b",
+  "format": "steps",
+  "results": [
+    {
+      "flow_id": "home_to_media_via_tab",
+      "status": "dry-run"
+    }
+  ]
+}

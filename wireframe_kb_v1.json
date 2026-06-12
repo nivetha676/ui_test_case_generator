@@ -1,0 +1,37 @@
+{
+  "system": "Car Infotainment",
+  "version": "1.0",
+  "screens": {
+    "home":    { "id": "home",    "title": "Home dashboard",  "url": "/home"    },
+    "media":   { "id": "media",   "title": "Media player",    "url": "/media"   },
+    "nav":     { "id": "nav",     "title": "Navigation",      "url": "/nav"     },
+    "climate": { "id": "climate", "title": "Climate control", "url": "/climate" },
+    "phone":   { "id": "phone",   "title": "Phone",           "url": "/phone"   }
+  },
+  "navigation_flows": {
+    "home_to_media_via_tab":    { "id": "home_to_media_via_tab",    "from": "home",    "to": "media",   "trigger": "tab_media",          "label": "Media tab"                  },
+    "home_to_media_via_widget": { "id": "home_to_media_via_widget", "from": "home",    "to": "media",   "trigger": "widget_now_playing",  "label": "Now playing widget"         },
+    "home_to_nav_via_tab":      { "id": "home_to_nav_via_tab",      "from": "home",    "to": "nav",     "trigger": "tab_nav",             "label": "Nav tab"                    },
+    "home_to_nav_via_widget":   { "id": "home_to_nav_via_widget",   "from": "home",    "to": "nav",     "trigger": "widget_navigation",   "label": "Navigation summary widget"  },
+    "home_to_climate_via_tab":  { "id": "home_to_climate_via_tab",  "from": "home",    "to": "climate", "trigger": "tab_climate",         "label": "Climate tab"                },
+    "home_to_climate_via_tile": { "id": "home_to_climate_via_tile", "from": "home",    "to": "climate", "trigger": "tile_climate",        "label": "Climate tile"               },
+    "home_to_phone_via_tab":    { "id": "home_to_phone_via_tab",    "from": "home",    "to": "phone",   "trigger": "tab_phone",           "label": "Phone tab"                  },
+    "home_to_phone_via_tile":   { "id": "home_to_phone_via_tile",   "from": "home",    "to": "phone",   "trigger": "tile_missed_calls",   "label": "Missed calls tile"          },
+    "media_to_home":            { "id": "media_to_home",            "from": "media",   "to": "home",    "trigger": "tab_home",            "label": "Home tab"                   },
+    "media_to_nav":             { "id": "media_to_nav",             "from": "media",   "to": "nav",     "trigger": "tab_nav",             "label": "Nav tab"                    },
+    "media_to_climate":         { "id": "media_to_climate",         "from": "media",   "to": "climate", "trigger": "tab_climate",         "label": "Climate tab"                },
+    "media_to_phone":           { "id": "media_to_phone",           "from": "media",   "to": "phone",   "trigger": "tab_phone",           "label": "Phone tab"                  },
+    "nav_to_home":              { "id": "nav_to_home",              "from": "nav",     "to": "home",    "trigger": "tab_home",            "label": "Home tab"                   },
+    "nav_to_media":             { "id": "nav_to_media",             "from": "nav",     "to": "media",   "trigger": "tab_media",           "label": "Media tab"                  },
+    "nav_to_climate":           { "id": "nav_to_climate",           "from": "nav",     "to": "climate", "trigger": "tab_climate",         "label": "Climate tab"                },
+    "nav_to_phone":             { "id": "nav_to_phone",             "from": "nav",     "to": "phone",   "trigger": "tab_phone",           "label": "Phone tab"                  },
+    "climate_to_home":          { "id": "climate_to_home",          "from": "climate", "to": "home",    "trigger": "tab_home",            "label": "Home tab"                   },
+    "climate_to_media":         { "id": "climate_to_media",         "from": "climate", "to": "media",   "trigger": "tab_media",           "label": "Media tab"                  },
+    "climate_to_nav":           { "id": "climate_to_nav",           "from": "climate", "to": "nav",     "trigger": "tab_nav",             "label": "Nav tab"                    },
+    "climate_to_phone":         { "id": "climate_to_phone",         "from": "climate", "to": "phone",   "trigger": "tab_phone",           "label": "Phone tab"                  },
+    "phone_to_home":            { "id": "phone_to_home",            "from": "phone",   "to": "home",    "trigger": "tab_home",            "label": "Home tab"                   },
+    "phone_to_media":           { "id": "phone_to_media",           "from": "phone",   "to": "media",   "trigger": "tab_media",           "label": "Media tab"                  },
+    "phone_to_nav":             { "id": "phone_to_nav",             "from": "phone",   "to": "nav",     "trigger": "tab_nav",             "label": "Nav tab"                    },
+    "phone_to_climate":         { "id": "phone_to_climate",         "from": "phone",   "to": "climate", "trigger": "tab_climate",         "label": "Climate tab"                }
+  }
+}

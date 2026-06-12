@@ -1,0 +1,118 @@
+{
+  "system": "Car Infotainment",
+  "version": "1.0",
+  "screens": {
+    "home": {
+      "id": "home", "title": "Home dashboard", "url": "/home",
+      "elements": [
+        {"id":"widget_now_playing","label":"Now playing widget","type":"info_widget","tappable":true,"action":"navigate","target_screen":"media"},
+        {"id":"widget_navigation","label":"Navigation summary widget","type":"info_widget","tappable":true,"action":"navigate","target_screen":"nav"},
+        {"id":"tile_climate","label":"Climate tile","type":"status_tile","tappable":true,"action":"navigate","target_screen":"climate"},
+        {"id":"tile_battery","label":"Battery tile","type":"status_tile","tappable":false,"action":"none"},
+        {"id":"tile_missed_calls","label":"Missed calls tile","type":"status_tile","tappable":true,"action":"navigate","target_screen":"phone"},
+        {"id":"tab_media","label":"Media tab","type":"tab","tappable":true,"action":"navigate","target_screen":"media"},
+        {"id":"tab_nav","label":"Nav tab","type":"tab","tappable":true,"action":"navigate","target_screen":"nav"},
+        {"id":"tab_climate","label":"Climate tab","type":"tab","tappable":true,"action":"navigate","target_screen":"climate"},
+        {"id":"tab_phone","label":"Phone tab","type":"tab","tappable":true,"action":"navigate","target_screen":"phone"}
+      ]
+    },
+    "media": {
+      "id": "media", "title": "Media player", "url": "/media",
+      "elements": [
+        {"id":"src_spotify","label":"Spotify","type":"toggle_button","tappable":true,"action":"set_source","states":["active","inactive"]},
+        {"id":"src_fm","label":"FM Radio","type":"toggle_button","tappable":true,"action":"set_source","states":["active","inactive"]},
+        {"id":"src_usb","label":"USB","type":"toggle_button","tappable":true,"action":"set_source","states":["active","inactive"]},
+        {"id":"src_bt","label":"Bluetooth","type":"toggle_button","tappable":true,"action":"set_source","states":["active","inactive"]},
+        {"id":"btn_play_pause","label":"Play/Pause","type":"button","tappable":true,"action":"toggle_playback","states":["playing","paused"]},
+        {"id":"btn_skip_fwd","label":"Skip forward","type":"button","tappable":true,"action":"skip_forward"},
+        {"id":"btn_skip_back","label":"Skip back","type":"button","tappable":true,"action":"skip_back"},
+        {"id":"btn_repeat","label":"Repeat","type":"toggle_button","tappable":true,"action":"toggle_repeat","states":["off","one","all"]},
+        {"id":"btn_shuffle","label":"Shuffle","type":"toggle_button","tappable":true,"action":"toggle_shuffle","states":["off","on"]},
+        {"id":"slider_volume","label":"Volume","type":"slider","tappable":true,"action":"set_volume","min":0,"max":100},
+        {"id":"slider_seek","label":"Seek bar","type":"slider","tappable":true,"action":"seek","min":0,"max":100},
+        {"id":"tab_home","label":"Home tab","type":"tab","tappable":true,"action":"navigate","target_screen":"home"},
+        {"id":"tab_nav","label":"Nav tab","type":"tab","tappable":true,"action":"navigate","target_screen":"nav"},
+        {"id":"tab_climate","label":"Climate tab","type":"tab","tappable":true,"action":"navigate","target_screen":"climate"},
+        {"id":"tab_phone","label":"Phone tab","type":"tab","tappable":true,"action":"navigate","target_screen":"phone"}
+      ]
+    },
+    "nav": {
+      "id": "nav", "title": "Navigation", "url": "/nav",
+      "elements": [
+        {"id":"inp_destination","label":"Destination search","type":"text_input","tappable":true,"action":"open_keyboard","placeholder":"Search destination..."},
+        {"id":"map_view","label":"Map view","type":"map_display","tappable":true,"action":"pan_map"},
+        {"id":"btn_go_home","label":"Go home","type":"button","tappable":true,"action":"navigate_saved","value":"home"},
+        {"id":"btn_go_work","label":"Go work","type":"button","tappable":true,"action":"navigate_saved","value":"work"},
+        {"id":"btn_route_fastest","label":"Fastest route","type":"radio_button","tappable":true,"action":"set_route_mode","value":"fastest"},
+        {"id":"btn_route_eco","label":"Eco route","type":"radio_button","tappable":true,"action":"set_route_mode","value":"eco"},
+        {"id":"btn_route_scenic","label":"Scenic route","type":"radio_button","tappable":true,"action":"set_route_mode","value":"scenic"},
+        {"id":"btn_start_nav","label":"Start navigation","type":"button","tappable":true,"action":"start_navigation","requires":["destination_set"]},
+        {"id":"tab_home","label":"Home tab","type":"tab","tappable":true,"action":"navigate","target_screen":"home"},
+        {"id":"tab_media","label":"Media tab","type":"tab","tappable":true,"action":"navigate","target_screen":"media"},
+        {"id":"tab_climate","label":"Climate tab","type":"tab","tappable":true,"action":"navigate","target_screen":"climate"},
+        {"id":"tab_phone","label":"Phone tab","type":"tab","tappable":true,"action":"navigate","target_screen":"phone"}
+      ]
+    },
+    "climate": {
+      "id": "climate", "title": "Climate control", "url": "/climate",
+      "elements": [
+        {"id":"disp_driver_temp","label":"Driver temperature display","type":"text_display","tappable":false},
+        {"id":"btn_driver_up","label":"Driver temp increase","type":"button","tappable":true,"action":"adjust_driver_temp","value":0.5},
+        {"id":"btn_driver_dn","label":"Driver temp decrease","type":"button","tappable":true,"action":"adjust_driver_temp","value":-0.5},
+        {"id":"disp_pass_temp","label":"Passenger temperature display","type":"text_display","tappable":false},
+        {"id":"btn_pass_up","label":"Passenger temp increase","type":"button","tappable":true,"action":"adjust_pass_temp","value":0.5},
+        {"id":"btn_pass_dn","label":"Passenger temp decrease","type":"button","tappable":true,"action":"adjust_pass_temp","value":-0.5},
+        {"id":"slider_fan","label":"Fan speed","type":"slider","tappable":true,"action":"set_fan_speed","min":0,"max":8},
+        {"id":"btn_auto","label":"Auto climate","type":"toggle_button","tappable":true,"action":"toggle_auto","states":["on","off"]},
+        {"id":"btn_ac","label":"A/C","type":"toggle_button","tappable":true,"action":"toggle_ac","states":["on","off"]},
+        {"id":"btn_recirc","label":"Recirculate","type":"toggle_button","tappable":true,"action":"toggle_recirc","states":["on","off"]},
+        {"id":"btn_defrost","label":"Defrost","type":"toggle_button","tappable":true,"action":"toggle_defrost","states":["off","front","rear","both"]},
+        {"id":"btn_seat_heat","label":"Seat heat","type":"toggle_button","tappable":true,"action":"toggle_seat_heat","states":["off","low","medium","high"]},
+        {"id":"tab_home","label":"Home tab","type":"tab","tappable":true,"action":"navigate","target_screen":"home"},
+        {"id":"tab_media","label":"Media tab","type":"tab","tappable":true,"action":"navigate","target_screen":"media"},
+        {"id":"tab_nav","label":"Nav tab","type":"tab","tappable":true,"action":"navigate","target_screen":"nav"},
+        {"id":"tab_phone","label":"Phone tab","type":"tab","tappable":true,"action":"navigate","target_screen":"phone"}
+      ]
+    },
+    "phone": {
+      "id": "phone", "title": "Phone", "url": "/phone",
+      "elements": [
+        {"id":"disp_device","label":"Connected device info","type":"info_widget","tappable":false},
+        {"id":"lst_recent_calls","label":"Recent calls list","type":"list","tappable":false},
+        {"id":"btn_call_1","label":"Call back contact 1","type":"button","tappable":true,"action":"place_call","target":"contact_1"},
+        {"id":"btn_call_2","label":"Call back contact 2","type":"button","tappable":true,"action":"place_call","target":"contact_2"},
+        {"id":"btn_call_3","label":"Call back contact 3","type":"button","tappable":true,"action":"place_call","target":"contact_3"},
+        {"id":"tab_home","label":"Home tab","type":"tab","tappable":true,"action":"navigate","target_screen":"home"},
+        {"id":"tab_media","label":"Media tab","type":"tab","tappable":true,"action":"navigate","target_screen":"media"},
+        {"id":"tab_nav","label":"Nav tab","type":"tab","tappable":true,"action":"navigate","target_screen":"nav"},
+        {"id":"tab_climate","label":"Climate tab","type":"tab","tappable":true,"action":"navigate","target_screen":"climate"}
+      ]
+    }
+  },
+  "navigation_flows": {
+    "home_to_media_via_tab":    {"id":"home_to_media_via_tab",   "from":"home","to":"media",  "trigger":"tab_media",         "label":"Media tab"},
+    "home_to_media_via_widget": {"id":"home_to_media_via_widget","from":"home","to":"media",  "trigger":"widget_now_playing","label":"Now playing widget"},
+    "home_to_nav_via_tab":      {"id":"home_to_nav_via_tab",     "from":"home","to":"nav",    "trigger":"tab_nav",           "label":"Nav tab"},
+    "home_to_nav_via_widget":   {"id":"home_to_nav_via_widget",  "from":"home","to":"nav",    "trigger":"widget_navigation", "label":"Navigation summary widget"},
+    "home_to_climate_via_tab":  {"id":"home_to_climate_via_tab", "from":"home","to":"climate","trigger":"tab_climate",       "label":"Climate tab"},
+    "home_to_climate_via_tile": {"id":"home_to_climate_via_tile","from":"home","to":"climate","trigger":"tile_climate",      "label":"Climate tile"},
+    "home_to_phone_via_tab":    {"id":"home_to_phone_via_tab",   "from":"home","to":"phone",  "trigger":"tab_phone",         "label":"Phone tab"},
+    "home_to_phone_via_tile":   {"id":"home_to_phone_via_tile",  "from":"home","to":"phone",  "trigger":"tile_missed_calls", "label":"Missed calls tile"},
+    "media_to_home":            {"id":"media_to_home",           "from":"media","to":"home",  "trigger":"tab_home",          "label":"Home tab"},
+    "media_to_nav":             {"id":"media_to_nav",            "from":"media","to":"nav",   "trigger":"tab_nav",           "label":"Nav tab"},
+    "media_to_climate":         {"id":"media_to_climate",        "from":"media","to":"climate","trigger":"tab_climate",      "label":"Climate tab"},
+    "media_to_phone":           {"id":"media_to_phone",          "from":"media","to":"phone", "trigger":"tab_phone",         "label":"Phone tab"},
+    "nav_to_home":              {"id":"nav_to_home",             "from":"nav","to":"home",    "trigger":"tab_home",          "label":"Home tab"},
+    "nav_to_media":             {"id":"nav_to_media",            "from":"nav","to":"media",   "trigger":"tab_media",         "label":"Media tab"},
+    "nav_to_climate":           {"id":"nav_to_climate",          "from":"nav","to":"climate", "trigger":"tab_climate",       "label":"Climate tab"},
+    "nav_to_phone":             {"id":"nav_to_phone",            "from":"nav","to":"phone",   "trigger":"tab_phone",         "label":"Phone tab"},
+    "climate_to_home":          {"id":"climate_to_home",         "from":"climate","to":"home","trigger":"tab_home",          "label":"Home tab"},
+    "climate_to_media":         {"id":"climate_to_media",        "from":"climate","to":"media","trigger":"tab_media",        "label":"Media tab"},
+    "climate_to_nav":           {"id":"climate_to_nav",          "from":"climate","to":"nav", "trigger":"tab_nav",           "label":"Nav tab"},
+    "climate_to_phone":         {"id":"climate_to_phone",        "from":"climate","to":"phone","trigger":"tab_phone",        "label":"Phone tab"},
+    "phone_to_home":            {"id":"phone_to_home",           "from":"phone","to":"home",  "trigger":"tab_home",          "label":"Home tab"},
+    "phone_to_media":           {"id":"phone_to_media",          "from":"phone","to":"media", "trigger":"tab_media",         "label":"Media tab"},
+    "phone_to_nav":             {"id":"phone_to_nav",            "from":"phone","to":"nav",   "trigger":"tab_nav",           "label":"Nav tab"},
+    "phone_to_climate":         {"id":"phone_to_climate",        "from":"phone","to":"climate","trigger":"tab_climate",      "label":"Climate tab"}
+  }
+}
