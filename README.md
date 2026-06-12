@@ -3,6 +3,28 @@
 Reads a `wireframe_kb.json` and uses a local Ollama model to generate
 test cases for every navigation flow — in step-by-step, Gherkin, or JSON format.
 
+## How to run the scripts:
+
+```bash
+# Single scenario — step-by-step
+python scripts/scenario_steps.py --scenario "play a song"
+
+# Gherkin format
+python scripts/scenario_steps.py --scenario "turn on A/C" --format gherkin
+
+# JSON (machine-readable, every step has element_id)
+python scripts/scenario_steps.py --scenario "navigate to work" --format json
+
+# Start from a specific screen (not home)
+python scripts/scenario_steps.py --scenario "call back a missed call" --start phone
+
+# Save to output/scenarios/
+python scripts/scenario_steps.py --scenario "enable defrost" --save
+
+# Interactive REPL — type scenarios one after another
+python scripts/scenario_steps.py
+```
+
 ## Project structure
 
 ```
